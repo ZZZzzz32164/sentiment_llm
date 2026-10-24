@@ -1,0 +1,5 @@
+requests
+python-dotenv
+jieba
+pandas
+scikit-learn
