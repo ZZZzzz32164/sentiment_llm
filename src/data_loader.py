@@ -13,6 +13,10 @@ def load_data(path: str = None) -> pd.DataFrame:
         path = DEFAULT_PATH
     df = pd.read_csv(path)
 
+    # 只保留模型需要的两列（online_shopping_10_cats 含额外 cat 类目列，一并丢弃）
+    keep = [c for c in ("label", "review") if c in df.columns]
+    df = df[keep]
+
     # 统一字段
     df["review"] = df["review"].astype(str).str.strip()
     df["label"] = df["label"].astype(int)
